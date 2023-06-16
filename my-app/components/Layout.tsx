@@ -27,4 +27,9 @@ const Layout : React.FC<LayoutProps> = ({children}) => {
     );
 }
 
+{/* Thsi is our Layout of the app it has 3 columns :
+-- the first column i sthe column with the home, notifications icon
+-- the second column is where we are going to see the tweets
+-- the third column is the followbar and such*/}
+
 export default Layout
