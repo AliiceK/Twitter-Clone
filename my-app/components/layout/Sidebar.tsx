@@ -1,6 +1,6 @@
 import { BsHouseFill, BsBellFill } from 'react-icons/bs';
 import { FaUser } from 'react-icons/fa';
-import SidebarLogo from '../SidebarLogo';
+import SidebarLogo from './SidebarLogo';
 import SidebarItem from './SidebarItem';
 import { BiLogOut } from 'react-icons/bi';
 import SidebarTweetButton from './SidebarTweetButton';
@@ -29,7 +29,7 @@ const Sidebar = () => {
         <div className="col-span-1 h-full pr-4 md:pr-6">
            <div className="flex flex-col items-end">
             <div className="space-y-2 lg:w-[230px]">
-                <SidebarLogo />
+                <SidebarLogo /> {/* The SidebarLogo is the little twitter sign at the top */}
                 {items.map((item) => (
                     <SidebarItem 
                     key={item.href}
@@ -38,13 +38,17 @@ const Sidebar = () => {
                     icon={item.icon}
                     />
                 ))}
-                <SidebarItem onClick={() => {}} icon={BiLogOut} label='Logout' />
+                <SidebarItem onClick={() => {}} icon={BiLogOut} label='Logout' /> {/*  the sidebaritem taking 4 prameters*/}
                 <SidebarTweetButton />
             </div>
            </div>
 
-        </div>
+         </div>
     )
 }
+
+{/* The outermost <div> sets the column span and padding, 
+the second <div> creates a flex container with column direction and aligns items to the end, 
+and the innermost <div> defines the spacing and width of its child elements.*/}
 
 export default Sidebar

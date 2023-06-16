@@ -34,6 +34,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
             ">
                 <Icon size={28} color='white'/>
             </div> 
+
+            {/*  This first div is for when twitter is opened on mobile : I'll be only displaying the icon*/}
             <div className="
             relative
             hidden
