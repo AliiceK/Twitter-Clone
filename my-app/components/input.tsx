@@ -4,7 +4,9 @@ interface InputProps {
     type?: string;
     disabled?: boolean;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+} 
+
+{/* This file is customizing our input elements for the email and password */ }
 
 const Input: React.FC<InputProps> = ({
     placeholder,
@@ -23,7 +25,7 @@ const Input: React.FC<InputProps> = ({
         w-full
         p-4
         bg-black
-        border-2
+        border-4
         border-neutral-800
         rounded-md
         outline-none
@@ -35,6 +37,8 @@ const Input: React.FC<InputProps> = ({
         disabled: opacity-70
         disabled: cursor-not-allowed
         "
+
+        
         />
     );
 }

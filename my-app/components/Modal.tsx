@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import Button from "./layout/Button";
+import Button from "./Button";
 
 interface ModalProps {
     isOpen?: boolean;
@@ -26,9 +26,12 @@ const Modal : React.FC<ModalProps> = ({
     disabled
 }) => {
     const handleClose = useCallback(() => {
-        if (disabled) {
+        if (disabled) { 
             return;
         }
+        {/* If it is disabled, the function returns early and does nothing. 
+        If not disabled, it invokes the onClose function,
+     which is the callback provided to handle the modal close action.*/}
 
         onClose();
     }, [disabled, onClose]);
@@ -44,6 +47,8 @@ const Modal : React.FC<ModalProps> = ({
     if(!isOpen) {
         return null;
     }
+    {/* . If the modal is not open, the component returns null, 
+effectively hiding the modal and preventing it from being rendered.*/ }
 
 
     return (
@@ -111,7 +116,7 @@ const Modal : React.FC<ModalProps> = ({
                         hover:opacity-70
                         transition
                         ">
-                            <AiOutlineClose size={20} />
+                            <AiOutlineClose size={20} /> {/* Represents the 'x' close icon */}
                         </button>
                     </div>
                     <div className="relatve p-10 flex-auto">
