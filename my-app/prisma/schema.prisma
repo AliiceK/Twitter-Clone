@@ -34,7 +34,7 @@ model User {
 
 model Post {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  body StringcreatedAt DateTime @default(now())
+  body String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId String @db.ObjectId
@@ -53,7 +53,7 @@ model Comment {
   userId String @db.ObjectId
   postId String @db.ObjectId
 
-  user User @relation(fields: [userId], references; [id], onDelete : Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
@@ -63,5 +63,5 @@ model Notification {
   userId String @db.ObjectId
   createdAt DateTime @default(now())
 
-  user User @relation(fields: [userId], references[id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
