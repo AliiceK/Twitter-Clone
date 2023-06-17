@@ -4,6 +4,7 @@ import Input from "../input";
 import Modal from "../Modal";
 import useRegisterModal from "@/hooks/UseRegisterModal";
 import RegisterModal from "./RegisterModal";
+import { signIn } from "next-auth/react";
 {/*Overall, the LoginModal component integrates the useLoginModal hook,
  state management hooks, custom Input component, and the Modal component to create a 
 login modal with email and password input fields and associated functionality */}
@@ -28,13 +29,19 @@ const LoginModal = () => {
     const onSubmit = useCallback(async () => {
         try {
             setLoading(true);
+
+            await signIn('credentials', {
+                email,
+                password
+            })
+
             loginModal.onClose();
         } catch (error) {
             console.log(error);
         } finally {
            setLoading(false);
         }
-    }, [loginModal])
+    }, [loginModal, email,password])
     {/* Setting Loading State: Before performing any asynchronous operations (e.g., making an API request for login), the setLoading function is called with the argument true.
  This sets the isLoading state to true, indicating that the login process is in a loading state.*/ }
 
