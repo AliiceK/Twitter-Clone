@@ -19,12 +19,14 @@ const Sidebar = () => {
     {
         label: 'Notification',
         href: '/notification',
-        icon: BsBellFill
+        icon: BsBellFill,
+        auth: true
     },
     {
        label:'Profile',
        href: '/users/123',
-       icon: FaUser
+       icon: FaUser,
+       auth: true
     }
     ];
     {/* Here we created an array of items so that we can display them on the first column : the profile, home and notifications*/}
@@ -39,6 +41,7 @@ const Sidebar = () => {
                     href={item.href}
                     label={item.label}
                     icon={item.icon}
+                    auth= {item.auth}
                     />
                 ))}
                { currentUser && ( <SidebarItem onClick={() => signOut()} icon={BiLogOut} label='Logout' />)} {/*  the sidebaritem taking 4 prameters*/}

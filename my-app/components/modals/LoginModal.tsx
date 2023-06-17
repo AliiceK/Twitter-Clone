@@ -57,6 +57,7 @@ const LoginModal = () => {
             />
             <Input
             placeholder="Password"
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             disabled={isLoading} 
