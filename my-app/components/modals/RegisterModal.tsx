@@ -2,7 +2,10 @@ import useLoginModal from "@/hooks/useLoginModal";
 import { useCallback, useState } from "react";
 import Input from "../input";
 import Modal from "../Modal";
+import axios from 'axios';
 import useRegisterModal from "@/hooks/UseRegisterModal";
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 {/*Overall, the LoginModal component integrates the useLoginModal hook,
  state management hooks, custom Input component, and the Modal component to create a 
 login modal with email and password input fields and associated functionality */}
@@ -30,13 +33,30 @@ const RegisterModal = () => {
     const onSubmit = useCallback(async () => {
         try {
             setLoading(true);
+
+            await axios.post('/api/register', {
+                email,
+                password,
+                username,
+                name
+            });
+
+            toast.success('Account created');
+
+
+            signIn('credentials', {
+                email,
+                password
+            }); 
+
             registerModal.onClose();
         } catch (error) {
             console.log(error);
+            toast.error("Something went wrong");
         } finally {
            setLoading(false);
         }
-    }, [registerModal])
+    }, [registerModal, email, password, username, name])
     {/* Setting Loading State: Before performing any asynchronous operations (e.g., making an API request for login), the setLoading function is called with the argument true.
  This sets the isLoading state to true, indicating that the login process is in a loading state.*/ }
 
