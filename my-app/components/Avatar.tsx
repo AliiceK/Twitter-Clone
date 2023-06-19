@@ -1,3 +1,7 @@
+import useUser from "@/hooks/useUser";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
+
 interface AvatarProps {
     userId: string;
     isLarge?: boolean;
@@ -10,8 +14,23 @@ const Avatar: React.FC<AvatarProps> = ({
     isLarge,
     hasBorder
 }) => {
+    const {data: fetchedUser } = useUser(userId);
+    const router = useRouter();
+
+    const onClick= useCallback((event: any) => {
+        event.stopPropagation();
+
+        const url = `/users/${userId}`;
+
+        router.push(url);
+    }, [router, userId])
     return (
-        <div></div>
+        <div className={`
+            ${hasBorder ? 'border-4 border-black' : ''}
+            ${isLarge ? 'h-32' : 'h-12'}
+            ${isLarge ? 'w-32' : 'w-12'}
+            
+            `}></div>
     );
 }
 
