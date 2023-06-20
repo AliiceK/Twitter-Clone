@@ -2,6 +2,9 @@ import {NextApiRequest, NextApiResponse} from "next";
 import { Prisma } from "@prisma/client";
 import prisma from '@/libs/prismadb';
 
+
+{/* The provided code represents an API route handler that handles a GET request to retrieve user information
+ and the number of followers for a specific user ID from a database using Prisma */}
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse

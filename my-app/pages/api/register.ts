@@ -3,7 +3,8 @@ import bcrypt from 'bcrypt';
 
 import prisma from "@/libs/prismadb";
 
-
+{/* Remember that handle is an API handler : an API route handler is a function that defines how the server
+ responds to incoming HTTP requests to a specific API endpoint. */}
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
