@@ -6,14 +6,14 @@ import {PrismaAdapter} from '@next-auth/prisma-adapter';
 
 import prisma from '@/libs/prismadb';
 {/* It represents an instance of the Prisma client, which is used to interact with the database.*/}
-import NextAuth from 'next-auth';
+import NextAuth ,{ AuthOptions } from 'next-auth';
 {/*it is the main NextAuth.js module used for configuring and running the authentication. */}
 import bcrypt from 'bcrypt';
 
 
 
 
-export default NextAuth({
+export const authOptions: AuthOptions = {
     adapter : PrismaAdapter(prisma),
     providers : [
         CredentialsProvider({
@@ -62,7 +62,9 @@ export default NextAuth({
     },
 
     secret: process.env.NEXTAUTH_SECRET
-});
+};
+
+export default NextAuth(authOptions);
 
 {/*The adapter property is set to PrismaAdapter(prisma), 
 indicating that Prisma will be used as the data adapter for NextAuth.js. 
