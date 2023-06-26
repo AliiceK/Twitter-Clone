@@ -25,7 +25,7 @@ const Form: React.FC<FormProps> = ({
 
 
     const {data: currentUser } = useCurrentUser();
-    const {mutate: mutatePosts} = usePosts(postId as string);
+    const {mutate: mutatePosts} = usePosts();
 
     const [body, setBody] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +45,7 @@ const Form: React.FC<FormProps> = ({
         } finally {
             setIsLoading(false);
         }
-    }, [body, mutatePosts(false)])
+    }, [body, mutatePosts])
     return (
         <div className="border-b-[1px] border-neutral-800 px-5 py-2">
             {currentUser ? (
