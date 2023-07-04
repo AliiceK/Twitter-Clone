@@ -7,7 +7,7 @@ import Avatar from "../Avatar";
 import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
 
 interface PostItemProps {
-    data: Record<string, any>
+    data: Record<string, any>;
     userId?: string;
 }
 
@@ -19,7 +19,7 @@ const PostItem: React.FC<PostItemProps> = ({ data, userId }) => {
     const {data: currentUser} = useCurrentUser();
 
     const gotoUser = useCallback((event: any ) => {
-        event.stopProgation();
+        event.stopPropagation();
 
         router.push(`/users/${data.user.id}`);
     }, [router, data.user.id]);
