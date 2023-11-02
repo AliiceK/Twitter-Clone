@@ -1,4 +1,0 @@
-[[redirects]]
-from = "/*"
-to = "_app.tsx"
-status = 200
